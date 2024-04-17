@@ -1,0 +1,19 @@
+name: Job Setup
+description: Environment setup for jobs.
+
+inputs:
+  install-dependencies:
+    description: Install sub-dependencies
+    default: ""
+runs:
+  using: composite
+  steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.9"
+    - name: Install Dependencies
+      shell: bash
+      run: pip install -e ".[${{ inputs.install-dependencies }}]"

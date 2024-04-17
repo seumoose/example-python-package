@@ -1,0 +1,51 @@
+default_stages: [commit, push]
+fail_fast: true
+repos:
+  - repo: local
+    hooks:
+      - id: isort
+        name: isort import formatting
+        description: Runs isort import against code.
+        entry: isort
+        language: system
+        types: [python]
+      - id: black
+        name: black code formatting
+        description: Runs black formatting against code.
+        entry: black
+        language: system
+        types: [python]
+      - id: pylint
+        name: pylint code linting
+        description: Runs pylint linting against code.
+        entry: pylint
+        language: system
+        files: ^example_python_package/
+        types: [python]
+      - id: mypy
+        name: mypy type checking
+        description: Runs mypy type checking against code.
+        entry: mypy
+        language: system
+        files: ^example_python_package/
+        types: [python]
+      - id: pytest
+        name: pytest code testing
+        description: Runs pytest testing against code.
+        entry: pytest --cov-fail-under=0
+        language: system
+        types: [python]
+        pass_filenames: false
+      - id: bandit
+        name: bandit security tests
+        description: Runs bandit reporting against code.
+        entry: bandit -rv -f json -o reports/bandit/report.json
+        language: system
+        files: ^example_python_package/
+        types: [python]
+      - id: restricted-file-types
+        name: unexpected file types
+        description: Checks for large file types.
+        entry: These file types are unusual and should be checked
+        language: fail
+        types: [binary]

@@ -1,0 +1,12 @@
+version: 2
+updates:
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "daily"
+      time: "13:00"
+    target-branch: "main"
+    versioning-strategy: "increase"
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]

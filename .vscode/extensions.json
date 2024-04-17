@@ -1,0 +1,14 @@
+{
+  // extension identifier format: ${publisher}.${name}. Example: vscode.csharp
+  // list of extensions which should be recommended for users of this workspace.
+  "recommendations": [
+    "ms-python.black-formatter",
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "njpwerner.autodocstring",
+    "streetsidesoftware.code-spell-checker",
+    "tamasfe.even-better-toml"
+  ],
+  // list of extensions recommended by VS Code that should not be recommended for users of this workspace.
+  "unwantedRecommendations": []
+}
